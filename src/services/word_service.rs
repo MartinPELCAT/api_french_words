@@ -19,7 +19,7 @@ pub async fn process_dictionary(path: &str) -> Vec<String> {
                     break;
                 }
             }
-            buffer
+            unidecode::unidecode(&buffer)
         })
         .skip(2)
         .collect::<Vec<_>>();

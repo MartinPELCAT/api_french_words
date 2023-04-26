@@ -26,15 +26,16 @@ async fn main() -> std::io::Result<()> {
         word_count: words.len(),
     };
 
-    println!("Server started at http://localhost:8080");
+    println!("Server started at http://localhost:6969");
     HttpServer::new(move || {
         App::new()
             .app_data(Data::new(context.clone()))
             .service(controllers::words::get_all)
             .service(controllers::words::get_random)
             .service(controllers::words::search_word)
+            .service(controllers::words::search_advanced)
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(("127.0.0.1", 6969))?
     .run()
     .await
 }
